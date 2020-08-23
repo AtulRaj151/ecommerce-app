@@ -14,7 +14,6 @@ import {
   ADD_TO_EDITABLE,
   REMOVE_FROM_EDITABLE,
 } from "../actions/actionTypes";
-import { act } from "react-dom/test-utils";
 
 const initialProductState = {
   list: [],
@@ -61,7 +60,6 @@ export default function products(state = initialProductState, action) {
       return {
         ...state,
         list: [...state.list, action.product],
-        editable: [...state.editable].push(false),
       };
     case HIDE_ADD_PRODUCT:
       return {

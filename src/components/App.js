@@ -7,10 +7,12 @@ import AddProduct from "./AddProduct";
 import { prettyDOM } from "@testing-library/react";
 
 class App extends Component {
+  //fetch api here
   componentDidMount() {
     this.props.dispatch(fetchProducts());
   }
 
+  //render the components
   render() {
     console.log("Props", this.props);
     const { products, dispatch, isVisibleAddProduct } = this.props;
@@ -27,6 +29,7 @@ class App extends Component {
   }
 }
 
+// passing callback function state as props
 function mapStateToProps(state) {
   return {
     products: state.products,

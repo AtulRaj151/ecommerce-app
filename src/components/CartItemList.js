@@ -11,12 +11,15 @@ import {
   changeEditInline,
 } from "../actions/products";
 import products from "../reducers/products";
+import { notify, notifyw } from "./Notifications";
 
 class CartItemList extends Component {
+  //increase the cart items
   increaseQuantity = (product) => {
     product.count = product.count + 1;
     this.props.dispatch(increaseProduct(product));
   };
+  //decrease the cart items
   decreaseQuantity = (product) => {
     if (product.count == 0) {
       return;
@@ -24,18 +27,23 @@ class CartItemList extends Component {
     product.count = product.count - 1;
     this.props.dispatch(decreaseProduct(product));
   };
-
+  // removes the products from the products list
   removeProduct = (product) => {
     this.props.dispatch(deleteProduct(product));
+    notifyw("Product removed");
   };
-
+  // add the product to cart array
   handleAddtoCart = (product) => {
     this.props.dispatch(addtoCart(product));
-  };
-  handleRemovefromCart = (product) => {
-    this.props.dispatch(removefromCart(product));
+    notify("Added to Cart");
   };
 
+  // removes the products from cart array on toggle
+  handleRemovefromCart = (product) => {
+    this.props.dispatch(removefromCart(product));
+    notifyw("Removed from Cart");
+  };
+  // this function checks if product is added in cart array and returns true for toggling the button of cart
   isAddedtoCart = (product) => {
     const { cart } = this.props.products;
 
@@ -46,12 +54,16 @@ class CartItemList extends Component {
     return true;
   };
 
+  // this function is for adding editable inline link when we click on edit
   handleAddtoEditable = (product) => {
     this.props.dispatch(addtoEditable(product));
   };
+  // this removes the product from editable
   handleRemovefromEditable = (product) => {
     this.props.dispatch(removefromEditable(product));
   };
+
+  // it checks wheatcher there is product in editable list[] : if present return true and change the value
   isAddedtoEditable = (product) => {
     const { editable } = this.props.products;
 
@@ -62,30 +74,36 @@ class CartItemList extends Component {
     return true;
   };
 
+  // this is used to change the product when we edit inline
   handleChange = (fieldName, val, product) => {
     product[fieldName] = val;
   };
 
+  //on submit the inline changed product it removes from editable and to list of new products
   submitEditChange = (product, index) => {
     this.props.dispatch(changeEditInline(product, index));
+    notify("Edited Inline");
   };
 
   render() {
     const { products } = this.props;
     const { list, isCartProducts, cart } = products;
+    // isCartProducts is true the display products would be cart items else products
     const displayProducts = isCartProducts ? cart : list;
     console.log("Products lists", products);
-    let isCart = false;
 
     return (
       <div className="product-lists">
+        {/* if isCartProducts is true then it shows the Cart Item heading */}
         {isCartProducts ? <h1>Cart Items</h1> : null}
+        {/* map all the products in cart item */}
         {displayProducts.map((product, index) => (
           <div className="cart-item" key={index}>
             <div className="left-block">
               <img style={Style.image} src={product.imgUrl} />
             </div>
             <div className="right-block">
+              {/* checks if product is added to editable list accordingly edit options are avaialble */}
               {this.isAddedtoEditable(product) ? (
                 <input
                   type="text"
@@ -124,6 +142,7 @@ class CartItemList extends Component {
               )}
 
               <div className="btn-grp">
+                {/* buttons for save the editable inline */}
                 {this.isAddedtoEditable(product) && (
                   <button
                     onClick={() => {

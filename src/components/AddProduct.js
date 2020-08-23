@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import { appendProduct, hideAddProduct } from "../actions/products";
+import { notify } from "./Notifications";
 
 class AddProduct extends Component {
+  //add prodcut functions
   handleaddProduct = (e) => {
     e.preventDefault();
+
+    //fetching the value from  input forms
     let name = document.getElementById("name").value;
     let imgUrl = document.getElementById("image").value;
     let description = document.getElementById("description").value;
@@ -15,13 +19,17 @@ class AddProduct extends Component {
       name,
       price,
     };
-
+    //sending to action createrrs
     this.props.dispatch(appendProduct(product));
     this.props.dispatch(hideAddProduct(false));
+    notify("Added Products");
   };
+
+  //function to close the add product dialgue box
   handleCloseDialogueBox = (val) => {
     this.props.dispatch(hideAddProduct(val));
   };
+  //render the components
   render() {
     return (
       <div className="add-product-container">

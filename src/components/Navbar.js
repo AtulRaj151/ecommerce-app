@@ -6,12 +6,15 @@ import {
 } from "../actions/products";
 
 class Navbar extends React.Component {
+  // navbar items to show add products in navbar
   handleAddProduct = (val) => {
     this.props.dispatch(showAddProduct(val));
   };
+  // function to show cart item page in navbar
   handleShowCartItem = (val) => {
     this.props.dispatch(showCartItem(val));
   };
+  // hide the cart item
   handleHideCartItem = (val) => {
     this.props.dispatch(hideCartItem(val));
   };
