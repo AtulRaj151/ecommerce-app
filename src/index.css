@@ -48,11 +48,11 @@ body {
   margin-left: 72%;
 }
 .cartCount {
+  display: inline-block;
   background: white;
   border-radius: 50%;
   padding: 4px 8px;
   position: absolute;
-  right: 0px;
   top: -9px;
 }
 .cart-add-products {

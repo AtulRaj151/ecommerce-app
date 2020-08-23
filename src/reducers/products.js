@@ -13,6 +13,7 @@ import {
   EDIT_CHANGE_INLINE,
   ADD_TO_EDITABLE,
   REMOVE_FROM_EDITABLE,
+  SORT_BY_PRICE,
 } from "../actions/actionTypes";
 
 const initialProductState = {
@@ -115,7 +116,18 @@ export default function products(state = initialProductState, action) {
       return {
         ...state,
       };
+    case SORT_BY_PRICE: {
+      let sortedList = state.list;
+      sortedList.sort(compare);
+      return {
+        ...state,
+        list: sortedList,
+      };
+    }
     default:
       return state;
   }
+}
+function compare(p1, p2) {
+  return p1.price - p2.price;
 }

@@ -13,6 +13,7 @@ import {
   EDIT_CHANGE_INLINE,
   REMOVE_FROM_EDITABLE,
   ADD_TO_EDITABLE,
+  SORT_BY_PRICE,
 } from "./actionTypes";
 import { findByDisplayValue } from "@testing-library/react";
 export function fetchProducts() {
@@ -124,6 +125,11 @@ export function changeEditInline(product, index) {
     type: "CHANGE_EDIT_INLINE",
     product,
     index,
+  };
+}
+export function sortByPrice() {
+  return {
+    type: SORT_BY_PRICE,
   };
 }
 // export function changeText(inline) {

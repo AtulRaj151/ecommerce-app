@@ -3,6 +3,7 @@ import {
   showAddProduct,
   showCartItem,
   hideCartItem,
+  sortByPrice,
 } from "../actions/products";
 
 class Navbar extends React.Component {
@@ -17,6 +18,10 @@ class Navbar extends React.Component {
   // hide the cart item
   handleHideCartItem = (val) => {
     this.props.dispatch(hideCartItem(val));
+  };
+  //sort the products
+  handleSortByPrice = () => {
+    this.props.dispatch(sortByPrice());
   };
   render() {
     const { cart, isCartProducts } = this.props.products;
@@ -38,6 +43,12 @@ class Navbar extends React.Component {
           onClick={() => this.handleShowCartItem(true)}
           className="cartIconContainer"
         >
+          <button
+            style={{ marginLeft: "-26vw" }}
+            onClick={() => this.handleSortByPrice()}
+          >
+            SORT BY PRICE
+          </button>
           <img
             className="cartIcon"
             src="https://image.flaticon.com/icons/svg/630/630746.svg"
