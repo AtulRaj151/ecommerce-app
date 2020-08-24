@@ -21,3 +21,9 @@ sort of Alert/Notification
 - Give button to add a product to cart
 #### Cart page
 - Show all the items in the cart
+
+
+#### INSTALLATION
+- clone the project
+- npm install
+
