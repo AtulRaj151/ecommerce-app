@@ -39,16 +39,17 @@ class Navbar extends React.Component {
         >
           Add Products
         </div>
+        <button
+          className="sort-by-price"
+          onClick={() => this.handleSortByPrice()}
+        >
+          SORT BY PRICE
+        </button>
+
         <div
           onClick={() => this.handleShowCartItem(true)}
           className="cartIconContainer"
         >
-          <button
-            style={{ marginLeft: "-26vw" }}
-            onClick={() => this.handleSortByPrice()}
-          >
-            SORT BY PRICE
-          </button>
           <img
             className="cartIcon"
             src="https://image.flaticon.com/icons/svg/630/630746.svg"
