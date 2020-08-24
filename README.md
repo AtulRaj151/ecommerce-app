@@ -1,4 +1,4 @@
-### ECOMMERCE APPLICATION
+### ECOMMERCE APPLICATION USING REACT
 ##### PORJECT LINK (https://atulraj151.github.io/ecommerce-app/)
 ### Functionality
 #### Navbar
@@ -8,7 +8,7 @@
 - Show list of products from the API (using the above server)
 - Each product is editable by clicking on the “pencil” button. And we can
 - edit that product inline. On finish editing the product, show some sort of
-- Alert/Notification
+- Alert/Notification (react toastify)
 * Each product is deletable, on clicking of the delete button you should
 delete the product and show some sort of Alert/Notification
 * Implemented a sort button.
