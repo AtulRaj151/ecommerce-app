@@ -1,4 +1,7 @@
 ### ECOMMERCE APPLICATION USING REACT
+### DUMMY API
+- https://my-json-server.typicode.com/AtulRaj151/ecommerce-data/db
+- Used the https://my-json-server.typicode.com/ service to create a dummy ecommerce api service
 ##### PORJECT LINK (https://atulraj151.github.io/ecommerce-app/)
 ### Functionality
 #### Navbar
